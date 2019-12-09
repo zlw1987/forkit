@@ -3,13 +3,13 @@
     require_once('connect.php');
 
 //get variable from swift 
-    $username = $_POST[''];
-    $pass = $_POST[''];
-    $phone = $_POST[''];
-    $email = $_POST[''];
-    $Dname = $_POST[''];
-    $Fname = $_POST[''];
-    $Lname = $_POST[''];
+    $username = $_GET['username'];
+    $pass = $_GET['pass'];
+    $phone = $_GET['phone'];
+    $email = $_GET['email'];
+    $Dname = $_GET['Dname'];
+    $Fname = $_GET['Fname'];
+    $Lname = $_GET['Lname'];
     
 //chenk if username, phone, email is unique
     $sql = "SELECT * FROM `vendors` WHERE `vendor_login` = '$username'";

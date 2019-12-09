@@ -3,15 +3,15 @@
     require('connect.php');
 
 /*get variable from swift 
-    $name = $_POST['']; 
-    $price = $_POST[''];
-    $description = $_POST[''];
-    $r_id = $_POST[''];
+    $name = $_GET['name']; 
+    $price = $_GET['price'];
+    $description = $_GET['description'];
+    $r_id = $_GET['rid'];
     */
     
-    $name = 'beef'; 
+    $name = 'Gongbao Chicken'; 
     $price = 13.89;
-    $description = 'beef with broccoli, less salt. chief special';
+    $description = 'A spicy, stir-fried Chinese dish made with chicken, peanuts, vegetables, and chili peppers.';
     $r_id = 2;
 
     //Check if the dish is upload already
@@ -30,7 +30,7 @@
             $last_id = mysqli_insert_id($connection) or die(mysqli_error());
         
             //upload dish pic
-            $target_dir = "pic/" . strval($r_id) . "/";
+            $target_dir = "pic/" . strval($r_id). "/" . strval($last_id) . "/";
             if(!file_exists($target_dir)){
                 mkdir($target_dir);
             }

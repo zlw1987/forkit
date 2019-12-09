@@ -3,15 +3,15 @@
     require('connect.php');
 
 /*get variable from swift 
-    $vendor = $_POST['']; //传给我vendor id
-    $name = $_POST[''];
-    $phone = $_POST[''];
-    $description = $_POST[''];
-    $street = $_POST[''];
-    $street2 = $_POST[''];
-    $zipcode = $_POST[''];
-    $latitude = $_POST[''];
-    $longitude = $_POST[''];
+    $vendor = $_GET['vendor']; //传给我vendor id
+    $name = $_GET['name'];
+    $phone = $_GET['phone'];
+    $description = $_GET['description'];
+    $street = $_GET['street'];
+    $street2 = $_GET['street2'];
+    $zipcode = $_GET['zipcode'];
+    $latitude = $_GET['latitude'];
+    $longitude = $_GET['longitude'];
     */
     
     

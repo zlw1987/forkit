@@ -3,8 +3,8 @@
     require('connect.php');
 
 /*get variable from swift 
-    $ingredient = $_POST['']; 
-    $dish = $_POST[''];
+    $ingredient = $_GET['ingredient']; 
+    $dish = $_GET['dish'];
     */
     
     $ingredient = 12; 

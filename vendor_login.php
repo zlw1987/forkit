@@ -3,8 +3,8 @@
     require('connect.php');
 
 //get variable from swift 
-    $username = $_POST[''];
-    $pass = $_POST[''];
+    $username = $_GET['username'];
+    $pass = $_GET['pass'];
     
     $sql = "SELECT * FROM `vendors`WHERE `vendor_login` = '$username' AND `vendor_pass` = '$pass'";
     

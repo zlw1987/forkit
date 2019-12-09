@@ -2,8 +2,8 @@
     //database connection info
     require('connect.php');
     
-    $order = $_POST['order_id'];
-    $confirm = $POST['confirm'];//2 for Confirmed, 3 for Ready for pick up, 4 for Completed, 5 for Canceled, 6 for declined
+    $order = $_GET['order_id'];
+    $confirm = $GET['confirm'];//2 for Confirmed, 3 for Ready for pick up, 4 for Completed, 5 for Canceled, 6 for declined
     
     switch ($confirm){
         case 2: 

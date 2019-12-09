@@ -3,8 +3,9 @@
     require('connect.php');
 
     //get variable from swift 
-    $resp_json = $_POST['']; //post the result directly from google geocode api
-    $radius = $_POST['']; //radius should be miles
+    $resp_json = $_GET['geo']; //post the result directly from google geocode api
+    //$radius = $_GET['radius']; //radius should be miles
+    $radius = 50;
     
     // decode the json
     $resp = json_decode($resp_json, true);

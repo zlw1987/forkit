@@ -3,8 +3,8 @@
     require('connect.php');
 
 //get variable from swift 
-    $b_hour = json_decode($_POST["businesshour"]);//format should be 'day'(single vachart as 'M'),'s_time'(4 digit int as 1100), 'e_time'(4 digit int as 1700)
-    $r_id = $_POST['r_id'];
+    $b_hour = json_decode($_GET["businesshour"]);//format should be 'day'(single vachart as 'M'),'s_time'(4 digit int as 1100), 'e_time'(4 digit int as 1700)
+    $r_id = $_GET['r_id'];
     
 //data validation
     $bool = 0;

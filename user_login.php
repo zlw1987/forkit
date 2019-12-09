@@ -3,9 +3,12 @@
     require('connect.php');
 
 //get variable from swift 
-    $username = $_POST[''];
-    $pass = $_POST[''];
+    $username = $_GET['username'];
+    $pass = $_GET['pass'];
+    //$username = 'test6';
+    //$pass = 'test6';
     
+    // echo 'user:'.$username.'pass:'.$pass;
     $sql = "SELECT * FROM `users` WHERE `user_login` = '$username' AND `user_pass` = '$pass'";
     
     $resultset = mysqli_query($connection, $sql);
@@ -19,7 +22,7 @@
         echo "Wrong username/password combination";
     }
     elseif ($n == 1){
-        echo "Login succesful!";
+       // echo "Login succesful!";
         echo trim(json_encode($records));
     }
     else {

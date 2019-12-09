@@ -3,13 +3,13 @@
     require('connect.php');
 
 /*get variable from swift 
-    $user = $_POST['']; //传给我user id
-    $type = $_POST[''];
-    $street = $_POST[''];
-    $street = $_POST[''];
-    $zipcode = $_POST[''];
-    $city =  $_POST[''];
-    $state = $_POST[''];
+    $user = $_GET['user']; //传给我user id
+    $type = $_GET['type'];
+    $street = $_GET['street'];
+    $street2 = $_GET['street2'];
+    $zipcode = $_GET['zipcode'];
+    $city =  $_GET['city'];
+    $state = $_GET['state'];
     */
 
 //Check if the zipcode matches city and state

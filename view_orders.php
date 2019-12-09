@@ -3,7 +3,7 @@
     require('connect.php');
     
 //get user id
-    $id = $_POST['id'];
+    $id = $_GET['id'];
 
     //get all the orders
     $sql = "SELECT * FROM `orders` WHERE `user_id` = '$id'";

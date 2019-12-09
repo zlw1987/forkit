@@ -2,7 +2,8 @@
     //database info
     require('connect.php');
     
-    $restaurant = $_POST['r_id'];
+    $restaurant = $_GET['store_id'];
+    //$restaurant =1;
     
     
     //get restaurant info add address and tax rate based on zipcode
@@ -20,10 +21,23 @@
     while ($r = mysqli_fetch_assoc($result)){
         $dishes[] = $r;
     }
+    $dish = array();
+    foreach ($dishes as $d){
+        $sql = "SELECT `pic_url` FROM `dish_pics` WHERE `dish_id` = '$d[dish_id]'";
+        $result = mysqli_query($connection,$sql);
+        $url = array();
+        while ($u = mysqli_fetch_assoc($result)){
+            $url[] = $u;
+        }
+        $d[pic] = $url;
+        $dish[] = $d;
+    }
+    
+    $rest_info[dish] = $dish;
     
     
     echo trim(json_encode($rest_info));
-    echo trim(json_encode($dishes));
+    //echo trim(json_encode($dishes));
     
     
     mysqli_close($connection);

@@ -3,12 +3,12 @@
     require('connect.php');
     
     //get the order info
-    $order = json_decode($_POST['order']);//dishes info(dish_id, dish_price, quantity, comment)
-    $user = $_POST['user'];
-    $restaurant = $_POST['r_id'];
-    $pickup = $_POST['pickup'];
-    $tips = $_POST['tip'];
-    $comment = $_POST['comment'];
+    $order = json_decode($_GET['order']);//dishes info(dish_id, dish_price, quantity, comment)
+    $user = $_GET['user'];
+    $restaurant = $_GET['r_id'];
+    $pickup = $_GET['pickup'];
+    $tips = $_GET['tips'];
+    $comment = $_GET['comment'];
     
     //price calculation
     $sub = 0;

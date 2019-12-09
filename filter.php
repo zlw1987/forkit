@@ -3,9 +3,9 @@
     require('connect.php');
     
     //get the restaurant list and decode
-    $data = json_decode($_POST["restaurant"]);
+    $data = json_decode($_GET["restaurant"]);
     //get the filter criteria
-    $filter = $_POST['filter'];
+    $filter = $_GET['filter'];
     
     //find the cuisine id
     $sql = "SELECT * FROM `cuisines` WHERE `cuisine_type` = '$filter'";
