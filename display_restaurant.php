@@ -33,6 +33,17 @@
         }
         
         $r[dishes] = $dishes;
+        
+        //get the business hour
+        $sql = "SELECT `day`,`start_time`,`end_time` FROM `business_hour` WHERE `restaurant_id` = '$restaurant'";
+        $bh = mysqli_query($connection, $sql);
+        $bhour = array();
+        while ($rh = mysqli_fetch_assoc($bh)){
+            $bhour[] = $rh;
+        }
+        $r[business_hour] = $bhour;
+        
+        
         $restaurant[] = $r;
     }
     

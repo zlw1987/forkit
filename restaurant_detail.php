@@ -32,8 +32,17 @@
         $d[pic] = $url;
         $dish[] = $d;
     }
-    
     $rest_info[dish] = $dish;
+    
+    //get the business hour
+    $sql = "SELECT `day`,`start_time`,`end_time` FROM `business_hour` WHERE `restaurant_id` = '$restaurant'";
+    $result = mysqli_query($connection, $sql);
+    $bhour = array();
+    while ($r = mysqli_fetch_assoc($result)){
+        $bhour[] = $r;
+    }
+    $rest_info[business_hour] = $bhour;
+
     
     
     echo trim(json_encode($rest_info));
