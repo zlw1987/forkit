@@ -3,13 +3,13 @@
     require('connect.php');
 
 //get variable from swift 
-   // $r_id = $_GET['rid']; 
-   // $cuisine_id = $_GET['cid'];
+    $r_id = $_GET['rid']; 
+    $cuisine_id = $_GET['cid'];
   
-    $r_id = '3';
-    $cuisine_id = '4'; 
+    //$r_id = '3';
+    //$cuisine_id = '4'; 
     
-    //Check if the dish is upload already
+    //Check if the cuisine type is upload already
     $sql = "SELECT * FROM `restaurant_cuisine` WHERE `restaurant_id` = '$r_id' and `cuisine_id` = '$cuisine_id'";
     mysqli_query($connection,$sql) or die(mysqli_error());
     $n = mysqli_affected_rows($connection);

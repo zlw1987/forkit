@@ -2,7 +2,7 @@
 //connect to database
     require('connect.php');
 
-/*get variable from swift 
+//get variable from swift 
     $vendor = $_GET['vendor']; //传给我vendor id
     $name = $_GET['name'];
     $phone = $_GET['phone'];
@@ -12,10 +12,10 @@
     $zipcode = $_GET['zipcode'];
     $latitude = $_GET['latitude'];
     $longitude = $_GET['longitude'];
-    */
     
     
-    $vendor = 2; //会传给我vendor id还是login id?
+/*    
+    $vendor = 2; //传给我vendor id
     $name = 'Taiwanese Porridge Kingdom';
     $phone = '4089359369';
     $description = 'Snug counter serve offering porridge, dumplings & other standard Chinese dishes in a mellow setting.';
@@ -24,6 +24,7 @@
     $zipcode = '95035';
     $latitude = 37.455420;
     $longitude = -121.911020;
+*/
     
 //check if the restaurant existed
     $sql = "SELECT * FROM `restaurants` WHERE `vendor_id` = '$vendor' AND `name`='$name' AND `street`='$street'";

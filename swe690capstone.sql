@@ -3,8 +3,8 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Nov 30, 2019 at 05:20 PM
--- Server version: 5.6.44-cll-lve
+-- Generation Time: Dec 17, 2019 at 04:10 PM
+-- Server version: 5.6.46-cll-lve
 -- PHP Version: 7.2.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -62,7 +62,17 @@ CREATE TABLE `business_hour` (
 --
 
 INSERT INTO `business_hour` (`id`, `restaurant_id`, `day`, `start_time`, `end_time`) VALUES
-(2, 1, 'M', '12:00:00', '13:00:00');
+(2, 1, 'M', '11:00:00', '13:00:00'),
+(3, 1, 'T', '11:00:00', '13:00:00'),
+(4, 1, 'M', '17:00:00', '22:00:00'),
+(5, 1, 'T', '17:00:00', '22:00:00'),
+(6, 1, 'W', '17:00:00', '22:00:00'),
+(7, 1, 'W', '11:00:00', '13:00:00'),
+(8, 1, 'R', '17:00:00', '22:00:00'),
+(9, 1, 'R', '11:00:00', '13:00:00'),
+(10, 1, 'F', '11:00:00', '13:00:00'),
+(12, 1, 'S', '16:30:00', '23:59:00'),
+(13, 1, 'F', '17:00:00', '23:59:00');
 
 -- --------------------------------------------------------
 
@@ -124,8 +134,11 @@ CREATE TABLE `dishes` (
 --
 
 INSERT INTO `dishes` (`restaurant_id`, `dish_id`, `dish_name`, `price`, `discription`) VALUES
-(1, 1, 'beef', '13.89', 'beef with broccoli, less salt. chief special'),
-(2, 2, 'beef', '13.89', 'beef with broccoli, less salt. chief special');
+(1, 1, 'beef broccoli', '13.89', 'beef with broccoli, less salt. chief special'),
+(1, 3, 'Prown Cracker', '18.90', 'Prwons with spicy seasoning'),
+(1, 4, 'Roast Duck', '38.99', 'Troditional Beijing Roast Duck, with sauces'),
+(1, 5, 'Shrimp and Sauce Pork', '13.00', 'Pork, with sauces'),
+(2, 7, 'Gongbao Chicken', '13.89', 'A spicy, stir-fried Chinese dish made with chicken, peanuts, vegetables, and chili peppers.');
 
 -- --------------------------------------------------------
 
@@ -145,7 +158,11 @@ CREATE TABLE `dish_ingredient` (
 
 INSERT INTO `dish_ingredient` (`id`, `dish_id`, `ingredient_id`) VALUES
 (1, 1, 1),
-(2, 1, 12);
+(2, 1, 12),
+(3, 3, 13),
+(4, 3, 16),
+(6, 4, 15),
+(5, 4, 16);
 
 -- --------------------------------------------------------
 
@@ -175,6 +192,16 @@ CREATE TABLE `dish_pics` (
   `pic_url` varchar(2083) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `dish_pics`
+--
+
+INSERT INTO `dish_pics` (`id`, `dish_id`, `pic_url`) VALUES
+(1, 1, 'http://joinwebdesign.com/forkit/pic/1/1/beef-broccoli-7.jpg'),
+(2, 1, 'http://joinwebdesign.com/forkit/pic/1/1/broccoli-beef.jpg'),
+(3, 7, 'http://joinwebdesign.com/forkit/pic/2/7/kungbaochicken1.jpg'),
+(4, 7, 'http://joinwebdesign.com/forkit/pic/2/7/kungbaochicken2.jpg');
+
 -- --------------------------------------------------------
 
 --
@@ -202,7 +229,11 @@ INSERT INTO `ingredients` (`ingredient_id`, `ingredient`) VALUES
 (9, 'wheat'),
 (10, 'egg'),
 (11, 'fish'),
-(12, 'broccoli');
+(12, 'broccoli'),
+(13, 'prown'),
+(14, 'duck'),
+(15, 'honey'),
+(16, 'salt');
 
 -- --------------------------------------------------------
 
@@ -252,7 +283,8 @@ CREATE TABLE `restaurants` (
 INSERT INTO `restaurants` (`restaurant_id`, `vendor_id`, `name`, `status`, `phone`, `description`, `latitude`, `longitude`, `street`, `street2`, `zipcode`) VALUES
 (1, 1, 'test', 1, '6548793215', 'test description may be good', '40.71727401', '-74.00898606', '6084 Fair Ave', NULL, '94560'),
 (2, 2, 'Taste Good Beijing Cuisine', 0, '6508639703', 'traditional Chinese cuisine', '41.71727401', '-75.00898606', '76 S Abel St', NULL, '95035'),
-(8, 2, 'Taiwanese Porridge Kingdom', 1, '4089359369', 'Snug counter serve offering porridge, dumplings & other standard Chinese dishes in a mellow setting.', '37.45542000', '-121.91102000', '1706 N Milpitas Blvd', '', '95035');
+(8, 2, 'Taiwanese Porridge Kingdom', 1, '4089359369', 'Snug counter serve offering porridge, dumplings & other standard Chinese dishes in a mellow setting.', '37.45542000', '-121.91102000', '1706 N Milpitas Blvd', '', '95035'),
+(9, 3, 'Easterly Santa Clara', 1, '2839192930', 'Chinese Cusine', '41.71727401', '-75.00898606', '102 Linkin Blvd', '201', '94503');
 
 -- --------------------------------------------------------
 
@@ -265,6 +297,41 @@ CREATE TABLE `restaurant_cuisine` (
   `restaurant_id` int(11) NOT NULL,
   `cuisine_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `restaurant_cuisine`
+--
+
+INSERT INTO `restaurant_cuisine` (`id`, `restaurant_id`, `cuisine_id`) VALUES
+(1, 1, 1),
+(2, 1, 2),
+(11, 1, 4),
+(12, 2, 4),
+(20, 8, 4),
+(21, 9, 6);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `restaurant_status`
+--
+
+CREATE TABLE `restaurant_status` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `Explanation` text
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `restaurant_status`
+--
+
+INSERT INTO `restaurant_status` (`id`, `name`, `Explanation`) VALUES
+(1, 'Open', 'Open and go online'),
+(2, 'Private', 'Only the owner can see'),
+(3, 'Temporarily Closed', 'Temporarily leave, could be open anytime'),
+(4, 'Permanently Closed', 'Permanently closed.'),
+(0, 'Pending', 'Before approval');
 
 -- --------------------------------------------------------
 
@@ -2784,8 +2851,8 @@ CREATE TABLE `users` (
   `user_pass` varchar(64) NOT NULL,
   `user_email` varchar(100) NOT NULL,
   `phone` varchar(10) NOT NULL,
-  `fname` varchar(50) NOT NULL,
-  `lname` varchar(50) NOT NULL,
+  `fname` varchar(50) DEFAULT NULL,
+  `lname` varchar(50) DEFAULT NULL,
   `display_name` varchar(50) DEFAULT NULL,
   `user_registered` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `status` tinyint(1) NOT NULL DEFAULT '0'
@@ -2823,7 +2890,11 @@ CREATE TABLE `user_address` (
 --
 
 INSERT INTO `user_address` (`address_id`, `type_id`, `street`, `street2`, `zipcode`, `user_id`) VALUES
-(1, 2, '6084 Fair Ave.', '', 94560, 7);
+(1, 4, '6084 Fair Ave.', '', 94560, 7),
+(2, 1, '1231 Fair Ave.', '', 95035, 9),
+(3, 1, '123 Fair Ave.', '', 95112, 5),
+(4, 1, '123 Fair Ave.', '', 95116, 3),
+(5, 4, '123 Fair Ave.', '', 95116, 3);
 
 -- --------------------------------------------------------
 
@@ -6098,6 +6169,12 @@ ALTER TABLE `restaurant_cuisine`
   ADD KEY `cuisine_id` (`cuisine_id`);
 
 --
+-- Indexes for table `restaurant_status`
+--
+ALTER TABLE `restaurant_status`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `status`
 --
 ALTER TABLE `status`
@@ -6164,7 +6241,7 @@ ALTER TABLE `address_type`
 -- AUTO_INCREMENT for table `business_hour`
 --
 ALTER TABLE `business_hour`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `close_date`
@@ -6182,13 +6259,13 @@ ALTER TABLE `cuisines`
 -- AUTO_INCREMENT for table `dishes`
 --
 ALTER TABLE `dishes`
-  MODIFY `dish_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `dish_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `dish_ingredient`
 --
 ALTER TABLE `dish_ingredient`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `dish_order`
@@ -6200,13 +6277,13 @@ ALTER TABLE `dish_order`
 -- AUTO_INCREMENT for table `dish_pics`
 --
 ALTER TABLE `dish_pics`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `ingredients`
 --
 ALTER TABLE `ingredients`
-  MODIFY `ingredient_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `ingredient_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `orders`
@@ -6218,19 +6295,25 @@ ALTER TABLE `orders`
 -- AUTO_INCREMENT for table `restaurants`
 --
 ALTER TABLE `restaurants`
-  MODIFY `restaurant_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `restaurant_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `restaurant_cuisine`
 --
 ALTER TABLE `restaurant_cuisine`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+
+--
+-- AUTO_INCREMENT for table `restaurant_status`
+--
+ALTER TABLE `restaurant_status`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `status`
 --
 ALTER TABLE `status`
-  MODIFY `status_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `status_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `users`
@@ -6242,7 +6325,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `user_address`
 --
 ALTER TABLE `user_address`
-  MODIFY `address_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `address_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `vendors`
